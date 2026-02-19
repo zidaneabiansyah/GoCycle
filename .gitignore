@@ -4,6 +4,7 @@ Thumbs.db
 .vscode/
 .idea/
 docs/
+.agents/
 
 # --- Backend (Node/Bun) ---
 backend/node_modules/

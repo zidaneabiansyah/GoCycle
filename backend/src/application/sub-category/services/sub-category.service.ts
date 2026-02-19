@@ -16,8 +16,8 @@ export class SubCategoryService {
             .join(" ");
     }
 
-    async createSubCategory(userId: string, dto: CreateSubCategoryDTO): Promise<SubCategoryResponseDTO> {
-        const store = await this.storeRepo.findByUserId(userId);
+    async createSubCategory(storeId: string, dto: CreateSubCategoryDTO): Promise<SubCategoryResponseDTO> {
+        const store = await this.storeRepo.findById(storeId);
         if (!store) {
             throw new Error("STORE_NOT_FOUND");
         }
@@ -30,15 +30,15 @@ export class SubCategoryService {
         }
 
         const subCategory = await this.subCategoryRepo.createAndSave({
-            storeId: store.id,
+            studioId: store.id,
             name: capitalizedName,
         });
 
-        logger.info(`Sub-category created by store ${store.id}: ${subCategory.id}`);
+        logger.info(`Sub-category created by studio ${store.id}: ${subCategory.id}`);
 
         return {
             id: subCategory.id,
-            storeId: subCategory.storeId,
+            storeId: subCategory.studioId,
             name: subCategory.name,
             isOwner: true,
             createdAt: subCategory.createdAt,
@@ -46,8 +46,8 @@ export class SubCategoryService {
         };
     }
 
-    async updateSubCategory(userId: string, subCategoryId: string, dto: UpdateSubCategoryDTO): Promise<SubCategoryResponseDTO> {
-        const store = await this.storeRepo.findByUserId(userId);
+    async updateSubCategory(storeId: string, subCategoryId: string, dto: UpdateSubCategoryDTO): Promise<SubCategoryResponseDTO> {
+        const store = await this.storeRepo.findById(storeId);
         if (!store) {
             throw new Error("STORE_NOT_FOUND");
         }
@@ -57,8 +57,8 @@ export class SubCategoryService {
             throw new Error("SUB_CATEGORY_NOT_FOUND");
         }
 
-        if (subCategory.storeId !== store.id) {
-            logger.warn(`Store ${store.id} attempted to edit sub-category ${subCategoryId} owned by store ${subCategory.storeId}`);
+        if (subCategory.studioId !== store.id) {
+            logger.warn(`Studio ${store.id} attempted to edit sub-category ${subCategoryId} owned by studio ${subCategory.studioId}`);
             throw new Error("NOT_OWNER");
         }
 
@@ -77,11 +77,11 @@ export class SubCategoryService {
             throw new Error("UPDATE_FAILED");
         }
 
-        logger.info(`Sub-category updated by store ${store.id}: ${subCategoryId}`);
+        logger.info(`Sub-category updated by studio ${store.id}: ${subCategoryId}`);
 
         return {
             id: updated.id,
-            storeId: updated.storeId,
+            storeId: updated.studioId,
             name: updated.name,
             isOwner: true,
             createdAt: updated.createdAt,
@@ -89,27 +89,21 @@ export class SubCategoryService {
         };
     }
 
-    async getAllSubCategories(userId?: string): Promise<SubCategoryResponseDTO[]> {
+    async getAllSubCategories(): Promise<SubCategoryResponseDTO[]> {
         const subCategories = await this.subCategoryRepo.findAll();
-
-        let userStoreId: string | null = null;
-        if (userId) {
-            const store = await this.storeRepo.findByUserId(userId);
-            userStoreId = store?.id || null;
-        }
 
         return subCategories.map(sc => ({
             id: sc.id,
-            storeId: sc.storeId,
+            storeId: sc.studioId,
             name: sc.name,
-            isOwner: userStoreId ? sc.storeId === userStoreId : false,
+            isOwner: false,
             createdAt: sc.createdAt,
             updatedAt: sc.updatedAt,
         }));
     }
 
-    async getMySubCategories(userId: string): Promise<SubCategoryResponseDTO[]> {
-        const store = await this.storeRepo.findByUserId(userId);
+    async getMySubCategories(storeId: string): Promise<SubCategoryResponseDTO[]> {
+        const store = await this.storeRepo.findById(storeId);
         if (!store) {
             throw new Error("STORE_NOT_FOUND");
         }
@@ -118,7 +112,7 @@ export class SubCategoryService {
 
         return subCategories.map(sc => ({
             id: sc.id,
-            storeId: sc.storeId,
+            storeId: sc.studioId,
             name: sc.name,
             isOwner: true,
             createdAt: sc.createdAt,

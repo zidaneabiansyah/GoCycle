@@ -5,16 +5,16 @@ import {
     getAllSubCategoriesHandler,
     getMySubCategoriesHandler,
 } from "../controllers/sub-category.controller";
-import { authenticate, optionalAuthenticate } from "../../../../middlewares/auth.middleware";
 
 const router = Router();
 
-router.get("/", optionalAuthenticate, getAllSubCategoriesHandler);
+// Public endpoints - no authentication required for showcase
+router.get("/", getAllSubCategoriesHandler);
 
-router.get("/my-sub-categories", authenticate, getMySubCategoriesHandler);
+router.get("/my-sub-categories", getMySubCategoriesHandler);
 
-router.post("/", authenticate, createSubCategoryHandler);
+router.post("/", createSubCategoryHandler);
 
-router.put("/:id", authenticate, updateSubCategoryHandler);
+router.put("/:id", updateSubCategoryHandler);
 
 export default router;

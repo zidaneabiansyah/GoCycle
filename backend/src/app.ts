@@ -3,11 +3,14 @@ import applyCors from "./middlewares/cors.middleware";
 import logger from "./infrastructure/logging/logger";
 import morgan from "morgan";
 
-import authRoute from "./interfaces/http/express/routes/auth.route";
-import userRoute from "./interfaces/http/express/routes/user.route";
 import storeRoute from "./interfaces/http/express/routes/store.route";
 import productRoute from "./interfaces/http/express/routes/product.route";
 import subCategoryRoute from "./interfaces/http/express/routes/sub-category.route";
+import showcaseRoute from "./interfaces/http/express/routes/showcase.route";
+import diyRoute from "./interfaces/http/express/routes/diy.route";
+import impactRoute from "./interfaces/http/express/routes/impact.route";
+import journeyRoute from "./interfaces/http/express/routes/journey.route";
+import makersRoute from "./interfaces/http/express/routes/makers.route";
 
 const app = express();
 
@@ -34,11 +37,16 @@ app.use(
     })
 );
 
-app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
 app.use("/api/stores", storeRoute);
 app.use("/api/products", productRoute);
 app.use("/api/sub-categories", subCategoryRoute);
+
+// New showcase endpoints
+app.use("/api/showcase", showcaseRoute);
+app.use("/api/diy", diyRoute);
+app.use("/api/impact", impactRoute);
+app.use("/api/journey", journeyRoute);
+app.use("/api/makers", makersRoute);
 
 app.get("/status", (req, res) => {
     res.status(200).json({

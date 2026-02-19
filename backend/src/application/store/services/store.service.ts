@@ -1,31 +1,28 @@
 import { StoreRepository } from "../repositories/store.repository";
-import { UserRepository } from "../../user/repositories/user.repository";
 import { CreateStoreDTO, StoreResponseDTO } from "../dto/store.dto";
-import { UserAccountType } from "../../../domain/enums/UserAccountType";
 import logger from "../../../infrastructure/logging/logger";
 
 export class StoreService {
     constructor(
-        private readonly storeRepo: StoreRepository,
-        private readonly userRepo: UserRepository
+        private readonly storeRepo: StoreRepository
     ) { }
 
-    async createStore(userId: string, dto: CreateStoreDTO): Promise<StoreResponseDTO> {
-        // Check if user already has a store
-        const existingStore = await this.storeRepo.findByUserId(userId);
+    async createStore(makerId: string, dto: CreateStoreDTO): Promise<StoreResponseDTO> {
+        // Check if maker already has a store
+        const existingStore = await this.storeRepo.findByUserId(makerId);
         if (existingStore) {
-            logger.warn(`User ${userId} already has a store`);
+            logger.warn(`Maker ${makerId} already has a store`);
             throw new Error("STORE_ALREADY_EXISTS");
         }
 
-        // Create the store - build data object explicitly
+        // Create the store
         const storeData: {
-            userId: string;
+            makerId: string;
             name: string;
             address: string;
             description?: string;
         } = {
-            userId,
+            makerId,
             name: dto.name.trim(),
             address: dto.address.trim(),
         };
@@ -36,14 +33,11 @@ export class StoreService {
 
         const store = await this.storeRepo.createAndSave(storeData);
 
-        // Update user's accountType to Penjual
-        await this.userRepo.updateAccountType(userId, UserAccountType.PENJUAL);
-
-        logger.info(`Store created for user ${userId}: ${store.id}`);
+        logger.info(`Store created for maker ${makerId}: ${store.id}`);
 
         return {
             id: store.id,
-            userId: store.userId,
+            userId: store.makerId,
             name: store.name,
             description: store.description,
             address: store.address,
@@ -51,8 +45,8 @@ export class StoreService {
         };
     }
 
-    async getMyStore(userId: string): Promise<StoreResponseDTO | null> {
-        const store = await this.storeRepo.findByUserId(userId);
+    async getMyStore(makerId: string): Promise<StoreResponseDTO | null> {
+        const store = await this.storeRepo.findByUserId(makerId);
 
         if (!store) {
             return null;
@@ -60,7 +54,7 @@ export class StoreService {
 
         return {
             id: store.id,
-            userId: store.userId,
+            userId: store.makerId,
             name: store.name,
             description: store.description,
             address: store.address,

@@ -8,7 +8,7 @@ import {
     JoinColumn,
     Index
 } from "typeorm";
-import { Store } from "./Store";
+import { EcoStudio } from "./EcoStudio";
 
 @Entity({ name: "sub_categories" })
 export class SubCategory {
@@ -17,11 +17,11 @@ export class SubCategory {
 
     @Index()
     @Column({ type: "uuid" })
-    storeId!: string;
+    studioId!: string;
 
-    @ManyToOne(() => Store, { onDelete: "CASCADE" })
-    @JoinColumn({ name: "storeId" })
-    store!: Store;
+    @ManyToOne(() => EcoStudio, { onDelete: "CASCADE" })
+    @JoinColumn({ name: "studioId" })
+    studio!: EcoStudio;
 
     @Column({ type: "varchar", length: 100 })
     name!: string;

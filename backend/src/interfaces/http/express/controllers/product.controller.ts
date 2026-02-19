@@ -18,11 +18,12 @@ export async function createProductHandler(req: Request, res: Response) {
     const file = (req as any).file as Express.Multer.File | undefined;
 
     try {
-        const userId = req.user?.id;
-        if (!userId) {
-            return res.status(401).json({
-                error: "UNAUTHORIZED",
-                message: "User not authenticated",
+        // For showcase: accept storeId from request body
+        const { storeId } = req.body;
+        if (!storeId) {
+            return res.status(400).json({
+                error: "STORE_ID_REQUIRED",
+                message: "Store ID is required",
             });
         }
 
@@ -61,7 +62,7 @@ export async function createProductHandler(req: Request, res: Response) {
             imagePath: file.filename,
         };
 
-        const product = await productService.createProduct(userId, dto);
+        const product = await productService.createProduct(storeId, dto);
 
         return res.status(201).json({
             message: "Product created successfully",
@@ -86,22 +87,23 @@ export async function createProductHandler(req: Request, res: Response) {
 
 export async function getMyProductsHandler(req: Request, res: Response) {
     try {
-        const userId = req.user?.id;
-        if (!userId) {
-            return res.status(401).json({
-                error: "UNAUTHORIZED",
-                message: "User not authenticated",
+        // For showcase: accept storeId from query param
+        const { storeId } = req.query;
+        if (!storeId || typeof storeId !== 'string') {
+            return res.status(400).json({
+                error: "STORE_ID_REQUIRED",
+                message: "Store ID is required as query parameter",
             });
         }
 
-        const products = await productService.getProductsByUser(userId);
+        const products = await productService.getProductsByStore(storeId);
 
         return res.status(200).json({
             message: "Products retrieved successfully",
             data: products,
         });
     } catch (err: any) {
-        logger.error("Get my products failed:", { message: err.message, stack: err.stack });
+        logger.error("Get products by store failed:", { message: err.message, stack: err.stack });
         return res.status(500).json({ error: "INTERNAL_SERVER_ERROR" });
     }
 }
@@ -112,10 +114,12 @@ export async function getAllProductsHandler(req: Request, res: Response) {
         const categoryParam = req.query.category as string | undefined;
         let category: ProductCategory | undefined;
 
-        if (categoryParam === "Kerajinan") {
-            category = ProductCategory.KERAJINAN;
-        } else if (categoryParam === "Bahan Baku") {
-            category = ProductCategory.BAHAN_BAKU;
+        if (categoryParam) {
+            // Validate category
+            const validCategories = Object.values(ProductCategory);
+            if (validCategories.includes(categoryParam as ProductCategory)) {
+                category = categoryParam as ProductCategory;
+            }
         }
 
         const products = await productService.getAllProducts(category);

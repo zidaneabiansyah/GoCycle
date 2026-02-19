@@ -1,4 +1,10 @@
 export enum ProductCategory {
-    KERAJINAN = "Kerajinan",
-    BAHAN_BAKU = "Bahan Baku",
+    HOME_DECOR = "HOME_DECOR",
+    FASHION = "FASHION",
+    FURNITURE = "FURNITURE",
+    ACCESSORIES = "ACCESSORIES",
+    TOYS = "TOYS",
+    GARDEN = "GARDEN",
+    ART = "ART",
+    KITCHENWARE = "KITCHENWARE",
 }

@@ -5,20 +5,19 @@ import {
     getAllProductsHandler,
     handleMulterError,
 } from "../controllers/product.controller";
-import { authenticate } from "../../../../middlewares/auth.middleware";
 import { productImageUpload } from "../../../../infrastructure/upload/upload.config";
 
 const router = Router();
 
+// Public endpoints - no authentication required for showcase
 router.post(
     "/",
-    authenticate,
     productImageUpload.single("image"),
     handleMulterError,
     createProductHandler
 );
 
-router.get("/my-products", authenticate, getMyProductsHandler);
+router.get("/my-products", getMyProductsHandler);
 
 router.get("/", getAllProductsHandler);
 

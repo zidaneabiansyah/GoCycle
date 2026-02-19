@@ -1,49 +1,49 @@
 import { Repository } from "typeorm";
-import { Product } from "../../../infrastructure/database/typeorm/entities/Product";
+import { EcoProduct } from "../../../infrastructure/database/typeorm/entities/EcoProduct";
 import { AppDataSource } from "../../../infrastructure/database/typeorm/data-source";
 import { ProductCategory } from "../../../domain/enums/ProductCategory";
 
 export class ProductRepository {
-    private repo: Repository<Product>;
+    private repo: Repository<EcoProduct>;
 
     constructor() {
-        this.repo = AppDataSource.getRepository(Product);
+        this.repo = AppDataSource.getRepository(EcoProduct);
     }
 
-    async findById(id: string): Promise<Product | null> {
+    async findById(id: string): Promise<EcoProduct | null> {
         return await this.repo.findOne({
             where: { id },
-            relations: ["subCategory", "store"],
+            relations: ["subCategory", "studio", "studio.maker"],
         });
     }
 
-    async findByStoreId(storeId: string): Promise<Product[]> {
+    async findByStoreId(studioId: string): Promise<EcoProduct[]> {
         return await this.repo.find({
-            where: { storeId },
-            relations: ["subCategory", "store"],
+            where: { studioId },
+            relations: ["subCategory", "studio", "studio.maker"],
             order: { createdAt: "DESC" },
         });
     }
 
-    async findAll(): Promise<Product[]> {
+    async findAll(): Promise<EcoProduct[]> {
         return await this.repo.find({
-            relations: ["subCategory", "store"],
+            relations: ["subCategory", "studio", "studio.maker"],
             order: { createdAt: "DESC" },
         });
     }
 
-    async findByCategory(category: ProductCategory): Promise<Product[]> {
+    async findByCategory(category: ProductCategory): Promise<EcoProduct[]> {
         return await this.repo.find({
             where: { category },
-            relations: ["subCategory", "store"],
+            relations: ["subCategory", "studio", "studio.maker"],
             order: { createdAt: "DESC" },
         });
     }
 
-    async createAndSave(productData: Partial<Product>): Promise<Product> {
+    async createAndSave(productData: Partial<EcoProduct>): Promise<EcoProduct> {
         const product = this.repo.create(productData);
         const saved = await this.repo.save(product);
         // Reload with relations
-        return await this.findById(saved.id) as Product;
+        return await this.findById(saved.id) as EcoProduct;
     }
 }

@@ -13,9 +13,9 @@ export class SubCategoryRepository {
         return await this.repo.findOne({ where: { id } });
     }
 
-    async findByStoreId(storeId: string): Promise<SubCategory[]> {
+    async findByStoreId(studioId: string): Promise<SubCategory[]> {
         return await this.repo.find({
-            where: { storeId },
+            where: { studioId },
             order: { name: "ASC" },
         });
     }

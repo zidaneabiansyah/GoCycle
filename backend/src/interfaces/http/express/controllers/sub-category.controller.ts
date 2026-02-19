@@ -11,11 +11,12 @@ const subCategoryService = new SubCategoryService(subCategoryRepo, storeRepo);
 
 export async function createSubCategoryHandler(req: Request, res: Response) {
     try {
-        const userId = req.user?.id;
-        if (!userId) {
-            return res.status(401).json({
-                error: "UNAUTHORIZED",
-                message: "User not authenticated",
+        // For showcase: accept storeId from request body
+        const { storeId } = req.body;
+        if (!storeId) {
+            return res.status(400).json({
+                error: "STORE_ID_REQUIRED",
+                message: "Store ID is required",
             });
         }
 
@@ -27,7 +28,7 @@ export async function createSubCategoryHandler(req: Request, res: Response) {
             });
         }
 
-        const subCategory = await subCategoryService.createSubCategory(userId, parseResult.data);
+        const subCategory = await subCategoryService.createSubCategory(storeId, parseResult.data);
 
         return res.status(201).json({
             message: "Sub-category created successfully",
@@ -37,7 +38,7 @@ export async function createSubCategoryHandler(req: Request, res: Response) {
         if (err.message === "STORE_NOT_FOUND") {
             return res.status(403).json({
                 error: "STORE_NOT_FOUND",
-                message: "You need to open a store first.",
+                message: "Store not found.",
             });
         }
 
@@ -55,11 +56,12 @@ export async function createSubCategoryHandler(req: Request, res: Response) {
 
 export async function updateSubCategoryHandler(req: Request, res: Response) {
     try {
-        const userId = req.user?.id;
-        if (!userId) {
-            return res.status(401).json({
-                error: "UNAUTHORIZED",
-                message: "User not authenticated",
+        // For showcase: accept storeId from request body
+        const { storeId } = req.body;
+        if (!storeId) {
+            return res.status(400).json({
+                error: "STORE_ID_REQUIRED",
+                message: "Store ID is required",
             });
         }
 
@@ -79,7 +81,7 @@ export async function updateSubCategoryHandler(req: Request, res: Response) {
             });
         }
 
-        const subCategory = await subCategoryService.updateSubCategory(userId, id, parseResult.data);
+        const subCategory = await subCategoryService.updateSubCategory(storeId, id, parseResult.data);
 
         return res.status(200).json({
             message: "Sub-category updated successfully",
@@ -89,7 +91,7 @@ export async function updateSubCategoryHandler(req: Request, res: Response) {
         if (err.message === "STORE_NOT_FOUND") {
             return res.status(403).json({
                 error: "STORE_NOT_FOUND",
-                message: "You need to open a store first.",
+                message: "Store not found.",
             });
         }
 
@@ -103,7 +105,7 @@ export async function updateSubCategoryHandler(req: Request, res: Response) {
         if (err.message === "NOT_OWNER") {
             return res.status(403).json({
                 error: "NOT_OWNER",
-                message: "You can only edit your own sub-categories.",
+                message: "You can only edit sub-categories from your store.",
             });
         }
 
@@ -121,8 +123,8 @@ export async function updateSubCategoryHandler(req: Request, res: Response) {
 
 export async function getAllSubCategoriesHandler(req: Request, res: Response) {
     try {
-        const userId = req.user?.id; // optional, for isOwner flag
-        const subCategories = await subCategoryService.getAllSubCategories(userId);
+        // For showcase: no user context needed
+        const subCategories = await subCategoryService.getAllSubCategories();
 
         return res.status(200).json({
             message: "Sub-categories retrieved successfully",
@@ -136,15 +138,16 @@ export async function getAllSubCategoriesHandler(req: Request, res: Response) {
 
 export async function getMySubCategoriesHandler(req: Request, res: Response) {
     try {
-        const userId = req.user?.id;
-        if (!userId) {
-            return res.status(401).json({
-                error: "UNAUTHORIZED",
-                message: "User not authenticated",
+        // For showcase: accept storeId from query param
+        const { storeId } = req.query;
+        if (!storeId || typeof storeId !== 'string') {
+            return res.status(400).json({
+                error: "STORE_ID_REQUIRED",
+                message: "Store ID is required as query parameter",
             });
         }
 
-        const subCategories = await subCategoryService.getMySubCategories(userId);
+        const subCategories = await subCategoryService.getMySubCategories(storeId);
 
         return res.status(200).json({
             message: "Sub-categories retrieved successfully",
@@ -154,11 +157,11 @@ export async function getMySubCategoriesHandler(req: Request, res: Response) {
         if (err.message === "STORE_NOT_FOUND") {
             return res.status(403).json({
                 error: "STORE_NOT_FOUND",
-                message: "You need to open a store first.",
+                message: "Store not found.",
             });
         }
 
-        logger.error("Get my sub-categories failed:", { message: err.message, stack: err.stack });
+        logger.error("Get sub-categories by store failed:", { message: err.message, stack: err.stack });
         return res.status(500).json({ error: "INTERNAL_SERVER_ERROR" });
     }
 }

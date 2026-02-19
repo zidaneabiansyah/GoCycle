@@ -1,0 +1,9 @@
+export enum WasteType {
+    PLASTIC = "PLASTIC",
+    METAL = "METAL",
+    CARDBOARD = "CARDBOARD",
+    GLASS = "GLASS",
+    TEXTILE = "TEXTILE",
+    ELECTRONIC = "ELECTRONIC",
+    ORGANIC = "ORGANIC",
+}
