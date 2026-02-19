@@ -4,34 +4,42 @@ import logger from "../logging/logger";
 
 let redisClient: RedisClientType | null = null;
 
-export const getRedisClient = async (): Promise<RedisClientType> => {
+export const getRedisClient = async (): Promise<RedisClientType | null> => {
     if (redisClient && redisClient.isOpen) {
         return redisClient;
     }
 
-    redisClient = createClient({
-        url: Env.REDIS_URL,
-    });
+    try {
+        redisClient = createClient({
+            url: Env.REDIS_URL,
+            socket: {
+                connectTimeout: 5000,
+                reconnectStrategy: false // Disable auto-reconnect
+            }
+        });
 
-    redisClient.on("error", (err: Error) => {
-        logger.error("Redis client error", { error: err.message });
-    });
+        redisClient.on("error", (err: Error) => {
+            logger.warn("Redis client error (optional service)", { error: err.message });
+        });
 
-    redisClient.on("connect", () => {
-        logger.info("Redis client connecting...");
-    });
+        redisClient.on("connect", () => {
+            logger.info("Redis client connecting...");
+        });
 
-    redisClient.on("ready", () => {
-        logger.info("Redis client ready");
-    });
+        redisClient.on("ready", () => {
+            logger.info("Redis client ready");
+        });
 
-    redisClient.on("reconnecting", () => {
-        logger.warn("Redis client reconnecting...");
-    });
-
-    await redisClient.connect();
-
-    return redisClient;
+        await redisClient.connect();
+        logger.info("Redis connected successfully");
+        return redisClient;
+    } catch (error) {
+        logger.warn("Redis connection failed - continuing without cache", { 
+            error: error instanceof Error ? error.message : "Unknown error" 
+        });
+        redisClient = null;
+        return null;
+    }
 };
 
 export const closeRedisClient = async (): Promise<void> => {

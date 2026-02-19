@@ -10,9 +10,10 @@ export class ImpactCounterRepository {
     }
 
     async getLatest(): Promise<ImpactCounter | null> {
-        return await this.repo.findOne({
+        return await this.repo.find({
             order: { updatedAt: "DESC" },
-        });
+            take: 1,
+        }).then(results => results[0] || null);
     }
 
     async getOrCreate(): Promise<ImpactCounter> {
