@@ -44,7 +44,7 @@ export default function ReduceRecycleReuse() {
                             </div>
 
                             {/* Visual Decoration: Mockup Floating Cards */}
-                            <div className="absolute right-[-10%] bottom-[-10%] w-[60%] h-[70%] bg-gray-50 rounded-tl-[3rem] border-t border-l border-gray-100 p-6 flex flex-col gap-4 group-hover:translate-x-[-10px] group-hover:translate-y-[-10px] transition-transform duration-500">
+                            <div className="absolute right-[-10%] bottom-[-10%] w-[60%] h-[70%] bg-gray-50 rounded-tl-[3rem] border-t border-l border-gray-100 p-6 flex flex-col gap-4 group-hover:-translate-x-2.5 group-hover:-translate-y-2.5 transition-transform duration-500">
                                 {/* Mock Item 1 */}
                                 <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
                                     <div className="w-12 h-12 bg-gray-200 rounded-lg animate-pulse"></div>
@@ -118,7 +118,7 @@ export default function ReduceRecycleReuse() {
 
                     {/* CARD 5: JOIN CTA (Vibrant) */}
                     <RevealOnScroll direction="up" delay={0.5} className="lg:col-span-1">
-                        <Link href="/register" className="group block h-full bg-[#2E8B57] rounded-[2.5rem] p-8 relative overflow-hidden hover:bg-[#246e45] transition-all duration-300 flex flex-col justify-center items-center text-center">
+                        <Link href="/register" className="group block h-full bg-[#2E8B57] rounded-[2.5rem] p-8 relative overflow-hidden hover:bg-[#246e45] transition-all duration-300 flex-col justify-center items-center text-center">
                             <div className="relative z-10">
                                 <h3 className="text-2xl font-bold text-white mb-2">Gabung Sekarang</h3>
                                 <p className="text-green-100 text-sm">Mulai langkah hijaumu.</p>

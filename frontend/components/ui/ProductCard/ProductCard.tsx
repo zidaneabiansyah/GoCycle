@@ -31,10 +31,10 @@ export default function ProductCard({
     return (
         <div
             onClick={() => router.push(`/marketplace/${id}`)}
-            className="group cursor-pointer bg-white rounded-[2rem] p-3 shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 ease-out h-full flex flex-col border border-gray-100/50"
+            className="group cursor-pointer bg-white rounded-4xl p-3 shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 ease-out h-full flex flex-col border border-gray-100/50"
         >
             {/* Image Section */}
-            <div className="relative aspect-square rounded-[1.5rem] overflow-hidden bg-gray-50 mb-4">
+            <div className="relative aspect-square rounded-3xl overflow-hidden bg-gray-50 mb-4">
                 <img
                     src={image}
                     alt={name}
@@ -42,7 +42,7 @@ export default function ProductCard({
                 />
 
                 {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Top Badges */}
                 <div className="absolute top-3 left-3 flex flex-col gap-2 items-start">
@@ -60,7 +60,7 @@ export default function ProductCard({
             </div>
 
             {/* Content Section */}
-            <div className="px-2 pb-2 flex flex-col flex-grow">
+            <div className="px-2 pb-2 flex flex-col grow">
                 {/* Sub-Category & Rating */}
                 <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-lg">

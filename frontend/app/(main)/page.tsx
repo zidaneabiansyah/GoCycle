@@ -28,7 +28,7 @@ export default function Home() {
               Cara Kerja GOCYCLE
             </div>
             <h3 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight mb-6">
-              Ubah Limbah Jadi <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E8B57] to-[#4ADE80]">Cuan & Karya</span>
+              Ubah Limbah Jadi <span className="text-transparent bg-clip-text bg-linear-to-r from-[#2E8B57] to-[#4ADE80]">Cuan & Karya</span>
             </h3>
             <p className="text-lg text-gray-600 leading-relaxed">
               Proses yang mudah, transparan, dan menguntungkan bagi semua pihak. Bergabunglah dalam ekosistem ekonomi sirkular kami.
@@ -41,9 +41,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* Marketplace Preview Section */}
-      <MarketplacePreview />
 
       {/* Testimonials Section */}
       <TestimonialsSection />
