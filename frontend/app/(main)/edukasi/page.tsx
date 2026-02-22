@@ -13,6 +13,11 @@ const Timeline = dynamic(() => import("@/components/ui/Timeline/Timeline").then(
     ssr: false
 });
 
+const EdukasiContent = dynamic(() => import("@/components/sections/EdukasiContent/EdukasiContent").then((mod) => mod.EdukasiContent), {
+    loading: () => <div className="h-96 w-full bg-gray-50 animate-pulse" />,
+    ssr: false
+});
+
 const factsData = [
     {
         name: "64 Juta Ton",
@@ -192,83 +197,10 @@ export default function Edukasi() {
                 <Timeline data={timelineData} />
             </div>
 
-            {/* 4. TUTORIAL DIY SECTION */}
-            <div className="bg-white py-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-12"
-                    >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 text-orange-600 text-sm font-bold tracking-wide uppercase mb-4 border border-orange-100">
-                            <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse"></span>
-                            Tutorial DIY
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">
-                            Belajar{" "}
-                            <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-amber-500">
-                                Daur Ulang
-                            </span>
-                        </h2>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                            Panduan step-by-step membuat produk bernilai dari sampah. Mudah diikuti, ramah lingkungan.
-                        </p>
-                    </motion.div>
+            {/* 4. ACTIONABLE CONTENT - TABS */}
+            <EdukasiContent />
 
-                    <div className="text-center">
-                        <a
-                            href="/edukasi/diy"
-                            className="inline-flex items-center gap-2 px-8 py-4 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-                        >
-                            <IconTools size={20} />
-                            Lihat Semua Tutorial
-                            <IconArrowRight size={20} />
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {/* 5. WASTE JOURNEY SIMULATOR SECTION */}
-            <div className="bg-[#F8F9FA] py-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-12"
-                    >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-[#2E8B57] text-sm font-bold tracking-wide uppercase mb-4 border border-green-100">
-                            <span className="w-2 h-2 rounded-full bg-[#2E8B57] animate-pulse"></span>
-                            Waste Journey Simulator
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">
-                            Perjalanan{" "}
-                            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#2E8B57] to-[#4ADE80]">
-                                Sampahmu
-                            </span>
-                        </h2>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                            Lihat perbedaan dampak antara membuang sampah sembarangan vs mendaur ulang. Pilihan kecilmu, dampak besar!
-                        </p>
-                    </motion.div>
-
-                    <div className="text-center">
-                        <a
-                            href="/journey"
-                            className="inline-flex items-center gap-2 px-8 py-4 bg-[#2E8B57] text-white rounded-full font-bold hover:bg-[#246e45] transition-all duration-300 shadow-lg hover:shadow-xl"
-                        >
-                            <IconRecycle size={20} />
-                            Mulai Simulasi
-                            <IconArrowRight size={20} />
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {/* 6. AI SPOTLIGHT SECTION - "GOGO" SHOWCASE */}
+            {/* 5. AI SPOTLIGHT SECTION - "GOGO" SHOWCASE */}
             <div className="relative py-32 overflow-hidden bg-white">
                 {/* Clean Background Decoration */}
                 <div className="absolute top-1/2 left-0 w-[800px] h-[800px] bg-emerald-50/80 blur-[120px] rounded-full -translate-y-1/2 -translate-x-1/4"></div>
