@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <footer className="bg-emerald-950 text-white pt-20 pb-10 relative overflow-hidden">
             {/* Background Decorations */}
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-emerald-400 via-teal-500 to-emerald-600"></div>
+            <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-emerald-400 via-teal-500 to-emerald-600"></div>
             <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-900/30 rounded-full blur-3xl pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-900/20 rounded-full blur-2xl pointer-events-none"></div>
 
@@ -22,7 +22,7 @@ const Footer = () => {
                                 alt="Go Cycle Logo"
                                 className="h-12 w-auto object-contain brightness-0 invert transition-transform group-hover:scale-105"
                             />
-                            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-300">
+                            <span className="text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-emerald-400 to-teal-300">
                                 Go Cycle
                             </span>
                         </Link>
@@ -56,10 +56,10 @@ const Footer = () => {
                         <ul className="space-y-4">
                             {[
                                 { name: "Beranda", href: "/" },
-                                { name: "EcoMarket", href: "/marketplace" },
-                                { name: "Edukasi Lingkungan", href: "/edukasi" },
-                                { name: "Tentang Kami", href: "/tentang-kami" },
-                                { name: "Daftar Sekarang", href: "/register" },
+                                { name: "Showcase", href: "/marketplace" },
+                                { name: "Edukasi", href: "/edukasi" },
+                                { name: "Impakers", href: "/impakers" },
+                                { name: "Tentang", href: "/tentang-kami" },
                             ].map((link) => (
                                 <li key={link.name}>
                                     <Link
@@ -83,7 +83,7 @@ const Footer = () => {
                         <div className="bg-emerald-900/30 p-8 rounded-3xl border border-emerald-800/50 backdrop-blur-sm">
                             <ul className="space-y-6">
                                 <li className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 text-emerald-400">
+                                    <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400">
                                         <IconMapPin size={20} />
                                     </div>
                                     <span className="text-emerald-100/80 leading-relaxed">
@@ -91,7 +91,7 @@ const Footer = () => {
                                     </span>
                                 </li>
                                 <li className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 text-emerald-400">
+                                    <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400">
                                         <IconMail size={20} />
                                     </div>
                                     <a href="mailto:hello@gocycle.id" className="text-emerald-100/80 hover:text-white transition-colors">
@@ -99,7 +99,7 @@ const Footer = () => {
                                     </a>
                                 </li>
                                 <li className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 text-emerald-400">
+                                    <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400">
                                         <IconPhone size={20} />
                                     </div>
                                     <a href="tel:+6281234567890" className="text-emerald-100/80 hover:text-white transition-colors">

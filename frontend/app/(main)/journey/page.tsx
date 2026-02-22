@@ -125,7 +125,7 @@ export default function WasteJourneyPage() {
                                                 key={waste.value}
                                                 onClick={() => setSelectedWaste(waste.value)}
                                                 className={`
-                          p-6 rounded-[2rem] border-2 transition-all duration-300 text-center
+                          p-6 rounded-4xl border-2 transition-all duration-300 text-center
                           ${isSelected
                                                         ? 'border-[#2E8B57] bg-green-50 shadow-lg scale-105'
                                                         : `${colors.border} ${colors.bg} ${colors.hover} hover:shadow-md`}
@@ -267,7 +267,7 @@ export default function WasteJourneyPage() {
                                                     <span className="text-white font-bold text-xl">{step.step}</span>
                                                 </div>
                                             </div>
-                                            <div className="flex-1 bg-white rounded-[2rem] p-6 shadow-sm border border-gray-100">
+                                            <div className="flex-1 bg-white rounded-4xl p-6 shadow-sm border border-gray-100">
                                                 <div className="flex items-start justify-between mb-3">
                                                     <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
                                                     {getImpactIcon(step.impact)}
@@ -290,7 +290,7 @@ export default function WasteJourneyPage() {
                                     <h2 className="text-3xl font-bold text-white mb-6">Ringkasan Dampak</h2>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                                        <div className="bg-white/20 backdrop-blur-sm rounded-[2rem] p-6">
+                                        <div className="bg-white/20 backdrop-blur-sm rounded-4xl p-6">
                                             <div className="text-5xl font-black text-white mb-2">
                                                 {journey.summary.totalSteps}
                                             </div>

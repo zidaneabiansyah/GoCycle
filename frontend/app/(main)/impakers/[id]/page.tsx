@@ -55,8 +55,8 @@ export default function MakerDetailPage() {
             <div className="bg-white min-h-screen pt-32 pb-20">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <p className="text-gray-600">Maker not found</p>
-                    <Link href="/makers" className="text-[#2E8B57] hover:underline mt-4 inline-block">
-                        Back to Makers
+                    <Link href="/impakers" className="text-[#2E8B57] hover:underline mt-4 inline-block">
+                        Back to Impakers
                     </Link>
                 </div>
             </div>
@@ -69,11 +69,11 @@ export default function MakerDetailPage() {
                 {/* Back Button */}
                 <RevealOnScroll direction="up">
                     <Link
-                        href="/makers"
+                        href="/impakers"
                         className="inline-flex items-center gap-2 text-gray-600 hover:text-[#2E8B57] mb-8 transition-colors"
                     >
                         <ArrowLeft size={20} />
-                        <span className="font-semibold">Kembali ke Makers</span>
+                        <span className="font-semibold">Kembali ke Impakers</span>
                     </Link>
                 </RevealOnScroll>
 

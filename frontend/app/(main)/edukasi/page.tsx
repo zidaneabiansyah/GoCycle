@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
-import { IconArrowRight, IconLeaf, IconRecycle, IconPlant, IconRobot, IconSparkles, IconSearch, IconScan, IconMessageChatbot, IconCamera, IconSend, IconBulb, IconVideo } from "@tabler/icons-react";
+import { IconArrowRight, IconLeaf, IconRecycle, IconPlant, IconRobot, IconSparkles, IconSearch, IconScan, IconMessageChatbot, IconCamera, IconSend, IconBulb, IconVideo, IconTools } from "@tabler/icons-react";
 
 import { AnimatedFacts } from "@/components/ui/AnimatedFacts/AnimatedFacts";
 import dynamic from "next/dynamic";
@@ -10,11 +10,6 @@ import dynamic from "next/dynamic";
 
 const Timeline = dynamic(() => import("@/components/ui/Timeline/Timeline").then((mod) => mod.Timeline), {
     loading: () => <div className="h-screen w-full bg-white animate-pulse" />,
-    ssr: false
-});
-
-const EdukasiContent = dynamic(() => import("@/components/sections/EdukasiContent/EdukasiContent").then((mod) => mod.EdukasiContent), {
-    loading: () => <div className="h-96 w-full bg-gray-50 animate-pulse" />,
     ssr: false
 });
 
@@ -48,7 +43,7 @@ const timelineData = [
                     Langkah pertama dimulai dari rumah. Memisahkan sampah organik, anorganik, dan residu adalah kunci utama dalam rantai daur ulang.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]">
+                    <div className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset]">
                         <Image
                             src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=500&q=80"
                             alt="sorting waste"
@@ -57,7 +52,7 @@ const timelineData = [
                             className="object-cover"
                         />
                     </div>
-                    <div className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]">
+                    <div className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset]">
                         <Image
                             src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=500&q=80"
                             alt="recycling bins"
@@ -78,7 +73,7 @@ const timelineData = [
                     Sampah yang terpilah dikumpulkan oleh petugas kebersihan atau bank sampah. Di sini, nilai ekonomi sampah mulai terlihat.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]">
+                    <div className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset]">
                         <Image
                             src="https://images.unsplash.com/photo-1595278069441-2cf29f8005a4?w=500&q=80"
                             alt="waste collection"
@@ -99,7 +94,7 @@ const timelineData = [
                     Sampah diolah menjadi bahan baku baru. Plastik dicacah menjadi bijih plastik, kertas didaur ulang menjadi bubur kertas.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]">
+                    <div className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset]">
                         <Image
                             src="/foto/Pengolahan sampah.jpg"
                             alt="recycling plant"
@@ -120,7 +115,7 @@ const timelineData = [
                     Hasil daur ulang lahir kembali menjadi produk baru yang bermanfaat, menutup siklus ekonomi sirkular.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]">
+                    <div className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset]">
                         <Image
                             src="https://img.freepik.com/free-photo/eco-bag-mockup_1108-287.jpg"
                             alt="recycled product"
@@ -140,7 +135,7 @@ export default function Edukasi() {
         <div className="min-h-screen font-sans bg-white">
 
             {/* 1. HERO SECTION */}
-            <div className="relative h-[100vh] flex items-center justify-center overflow-hidden sticky top-0 z-0">
+            <div className="relative h-screen flex items-center justify-center overflow-hidden top-0 z-0">
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="/foto/edukasi_hero.jpg"
@@ -149,7 +144,7 @@ export default function Edukasi() {
                         priority
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60"></div>
+                    <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/20 to-black/60"></div>
                 </div>
 
                 <div className="relative z-10 text-center px-4 max-w-5xl mx-auto -mt-24">
@@ -193,11 +188,87 @@ export default function Edukasi() {
             </div>
 
             {/* 3. TIMELINE */}
-            <div className="bg-white relative z-10">
+            <div className="bg-white relative z-10 overflow-hidden">
                 <Timeline data={timelineData} />
             </div>
 
-            {/* 4. AI SPOTLIGHT SECTION - "GOGO" SHOWCASE */}
+            {/* 4. TUTORIAL DIY SECTION */}
+            <div className="bg-white py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-12"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 text-orange-600 text-sm font-bold tracking-wide uppercase mb-4 border border-orange-100">
+                            <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse"></span>
+                            Tutorial DIY
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">
+                            Belajar{" "}
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-amber-500">
+                                Daur Ulang
+                            </span>
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                            Panduan step-by-step membuat produk bernilai dari sampah. Mudah diikuti, ramah lingkungan.
+                        </p>
+                    </motion.div>
+
+                    <div className="text-center">
+                        <a
+                            href="/edukasi/diy"
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                        >
+                            <IconTools size={20} />
+                            Lihat Semua Tutorial
+                            <IconArrowRight size={20} />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {/* 5. WASTE JOURNEY SIMULATOR SECTION */}
+            <div className="bg-[#F8F9FA] py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-12"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-[#2E8B57] text-sm font-bold tracking-wide uppercase mb-4 border border-green-100">
+                            <span className="w-2 h-2 rounded-full bg-[#2E8B57] animate-pulse"></span>
+                            Waste Journey Simulator
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">
+                            Perjalanan{" "}
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#2E8B57] to-[#4ADE80]">
+                                Sampahmu
+                            </span>
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                            Lihat perbedaan dampak antara membuang sampah sembarangan vs mendaur ulang. Pilihan kecilmu, dampak besar!
+                        </p>
+                    </motion.div>
+
+                    <div className="text-center">
+                        <a
+                            href="/journey"
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-[#2E8B57] text-white rounded-full font-bold hover:bg-[#246e45] transition-all duration-300 shadow-lg hover:shadow-xl"
+                        >
+                            <IconRecycle size={20} />
+                            Mulai Simulasi
+                            <IconArrowRight size={20} />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {/* 6. AI SPOTLIGHT SECTION - "GOGO" SHOWCASE */}
             <div className="relative py-32 overflow-hidden bg-white">
                 {/* Clean Background Decoration */}
                 <div className="absolute top-1/2 left-0 w-[800px] h-[800px] bg-emerald-50/80 blur-[120px] rounded-full -translate-y-1/2 -translate-x-1/4"></div>
@@ -215,11 +286,11 @@ export default function Edukasi() {
                             className="relative h-[600px] flex items-center justify-center order-2 lg:order-1"
                         >
                             {/* Decorative Elements */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-100/30 to-blue-50/30 rounded-[3rem] rotate-3 scale-95 border border-white/50"></div>
+                            <div className="absolute inset-0 bg-linear-to-tr from-emerald-100/30 to-blue-50/30 rounded-[3rem] rotate-3 scale-95 border border-white/50"></div>
                             <div className="absolute inset-0 bg-white/40 backdrop-blur-sm rounded-[3rem] -rotate-2 scale-95 shadow-2xl shadow-emerald-100/50"></div>
 
                             {/* Main Circle */}
-                            <div className="absolute w-[450px] h-[450px] bg-gradient-to-b from-emerald-50 to-white rounded-full border border-white shadow-inner z-0"></div>
+                            <div className="absolute w-[450px] h-[450px] bg-linear-to-b from-emerald-50 to-white rounded-full border border-white shadow-inner z-0"></div>
 
                             {/* MASCOT IMAGE */}
                             <div className="relative z-10 w-[420px] md:w-[520px] h-full drop-shadow-2xl hover:scale-105 transition-transform duration-500 ease-in-out">
@@ -258,7 +329,7 @@ export default function Edukasi() {
                             {/* Feature List */}
                             <div className="space-y-6 pt-2">
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-600 flex-shrink-0">
+                                    <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
                                         <IconScan size={24} />
                                     </div>
                                     <div>
@@ -268,7 +339,7 @@ export default function Edukasi() {
                                 </div>
 
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center text-orange-600 flex-shrink-0">
+                                    <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
                                         <IconBulb size={24} />
                                     </div>
                                     <div>
@@ -278,7 +349,7 @@ export default function Edukasi() {
                                 </div>
 
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                    <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
                                         <IconVideo size={24} />
                                     </div>
                                     <div>
@@ -298,12 +369,6 @@ export default function Edukasi() {
                     </div>
                 </div>
             </div>
-
-            {/* 5. ACTIONABLE CONTENT */}
-            <EdukasiContent />
-
-            {/* AI Assistant Floating Button */}
-
 
         </div>
     );

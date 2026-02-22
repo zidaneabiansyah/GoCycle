@@ -73,7 +73,7 @@ export default function MakersPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {makers.map((maker, index) => (
                             <RevealOnScroll key={maker.id} direction="up" delay={index * 0.1}>
-                                <Link href={`/makers/${maker.id}`}>
+                                <Link href={`/impakers/${maker.id}`}>
                                     <div className="group bg-white rounded-[2.5rem] border-2 border-gray-200 hover:border-[#2E8B57] transition-all duration-300 overflow-hidden hover:shadow-xl hover:shadow-green-500/10 h-full flex flex-col">
                                         {/* Avatar Section */}
                                         <div className="relative h-64 bg-linear-to-br from-green-50 to-emerald-50 flex items-center justify-center overflow-hidden">

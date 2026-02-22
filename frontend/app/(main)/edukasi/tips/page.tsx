@@ -91,10 +91,10 @@ export default function TipsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         onClick={() => router.push(`/edukasi/tips/${tipsData[0].id}`)}
-                        className="relative h-[500px] w-full rounded-[2rem] overflow-hidden group cursor-pointer border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500"
+                        className="relative h-[500px] w-full rounded-4xl overflow-hidden group cursor-pointer border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500"
                     >
                         <img src={tipsData[0].image} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Featured" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-transparent to-transparent"></div>
+                        <div className="absolute inset-0 bg-linear-to-t from-emerald-950/90 via-transparent to-transparent"></div>
                         <div className="absolute bottom-0 left-0 p-8 md:p-12 max-w-4xl">
                             <div className="flex items-center gap-3 mb-4">
                                 <span className="bg-emerald-500 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider inline-block">

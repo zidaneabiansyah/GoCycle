@@ -36,9 +36,8 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Beranda', href: '/' },
         { name: 'Showcase', href: '/showcase' },
-        { name: 'Tutorial DIY', href: '/edukasi/diy' },
-        { name: 'Waste Journey', href: '/journey' },
-        { name: 'Impact', href: '/impact' },
+        { name: 'Edukasi', href: '/edukasi' },
+        { name: 'Impakers', href: '/impakers' },
         { name: 'Tentang', href: '/tentang-kami' },
     ];
 
@@ -85,14 +84,8 @@ const Navbar = () => {
                         })}
                     </div>
 
-                    {/* Right Side - CTA Button */}
+                    {/* Right Side - Empty for now, CTA moved to Impakers page */}
                     <div className="hidden md:flex items-center">
-                        <Link 
-                            href="/makers" 
-                            className="bg-[#2E8B57] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#246e45] shadow-lg hover:shadow-green-200 transition-all transform hover:-translate-y-0.5"
-                        >
-                            Eco Makers
-                        </Link>
                     </div>
 
                     {/* Mobile Menu Button (Hamburger) */}
@@ -153,14 +146,7 @@ const Navbar = () => {
 
                                     <div className="h-px bg-gray-100 my-2" />
 
-                                    {/* Mobile CTA */}
-                                    <Link
-                                        href="/makers"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="flex items-center justify-center px-6 py-4 rounded-2xl text-white font-bold bg-[#2E8B57] hover:bg-[#246e45] shadow-lg shadow-emerald-500/30 transition-all"
-                                    >
-                                        Eco Makers
-                                    </Link>
+                                    {/* Mobile CTA - Removed, Impakers in main nav */}
                                 </div>
                             </div>
                         </motion.div>

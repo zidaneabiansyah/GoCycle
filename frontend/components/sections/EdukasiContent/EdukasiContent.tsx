@@ -156,7 +156,7 @@ export function EdukasiContent() {
                                     {tipsData.map((tip, index) => (
                                         <div
                                             key={tip.id}
-                                            className={`group relative overflow-hidden rounded-[32px] ${index === 0 ? 'md:col-span-2 md:row-span-2 h-[500px]' : 'h-[240px]'}`}
+                                            className={`group relative overflow-hidden rounded-4xl ${index === 0 ? 'md:col-span-2 md:row-span-2 h-[500px]' : 'h-60'}`}
                                         >
                                             <Image
                                                 src={tip.image}
@@ -166,7 +166,7 @@ export function EdukasiContent() {
                                                 className="absolute inset-0 object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent"></div>
 
                                             <div className="absolute bottom-0 left-0 p-8 w-full">
                                                 <div className="flex items-start justify-between mb-4">
@@ -207,7 +207,7 @@ export function EdukasiContent() {
                                     {diyData.map((diy, index) => (
                                         <div
                                             key={diy.id}
-                                            className={`group relative overflow-hidden rounded-[32px] ${index === 0 ? 'md:col-span-2 md:row-span-2 h-[500px]' : 'h-[240px]'}`}
+                                            className={`group relative overflow-hidden rounded-4xl ${index === 0 ? 'md:col-span-2 md:row-span-2 h-[500px]' : 'h-60'}`}
                                         >
                                             <Image
                                                 src={diy.image}
@@ -217,7 +217,7 @@ export function EdukasiContent() {
                                                 className="absolute inset-0 object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent"></div>
 
                                             <div className="absolute top-6 left-6 flex gap-2">
                                                 <span className="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white border border-white/20">
@@ -268,7 +268,7 @@ export function EdukasiContent() {
                                     {newsData.map((news, index) => (
                                         <div
                                             key={news.id}
-                                            className={`group relative overflow-hidden rounded-[32px] ${index === 0 ? 'md:col-span-2 md:row-span-2 h-[500px]' : 'h-[240px]'}`}
+                                            className={`group relative overflow-hidden rounded-4xl ${index === 0 ? 'md:col-span-2 md:row-span-2 h-[500px]' : 'h-60'}`}
                                         >
                                             <Image
                                                 src={news.image}
@@ -278,7 +278,7 @@ export function EdukasiContent() {
                                                 className="absolute inset-0 object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent"></div>
 
                                             <div className="absolute top-6 left-6">
                                                 <span className="bg-emerald-600/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg">
